@@ -5,7 +5,7 @@
 * [RESTful URLs](#restful-urls)
 * [HTTP Verbs](#http-verbs)
 * [Responses](#responses)
-* [Error handling](#error-handling)
+* [Gestión de errores](#Gestión-de-errores)
 * [Versiones](#versiones)
 * [Record limits](#record-limits)
 * [Request & Response Examples](#request-response-examples)
@@ -77,54 +77,52 @@ Esta guia tiene por objetivo darle soporte a una RESTful API. Salvo algunas exce
 
 | HTTP METHOD | POST            | GET       | PUT         | DELETE |
 | ----------- | --------------- | --------- | ----------- | ------ |
-| CRUD OP     | CREATE          | READ      | UPfecha      | DELETE |
-| /perros       | Create nuevo perro | List perros | Bulk upfecha | Delete all perros |
+| CRUD OP     | CREATE          | READ      | UPDATE     | DELETE |
+| /perros       | Create nuevo perro | List perros | Bulk update | Delete all perros |
 | /perros/1234  | Error           | Show perro   | If exists, update perro; If not, error | Delete perro |
 
-(Example from Web API Design, by Brian Mulloy, Apigee.)
 
+## Respuestas
 
-## Responses
+* No incluir valores en las keys
+* No terminos internos-especificos (ej. "node" y "taxonomy")
+* La Metadata solo debe incluir propiedades directas de la respuesta.
 
-* No values in keys
-* No internal-specific names (e.g. "node" and "taxonomy term")
-* Metadata should only contain direct properties of the response set, not properties of the members of the response set
+### Ejemplos Correctos
 
-### Good examples
-
-No values in keys:
+No incluir valores en las keys:
 
     "tags": [
-      {"id": "125", "name": "Environment"},
-      {"id": "834", "name": "Water Quality"}
+      {"id": "125", "nombre": "ambiente"},
+      {"id": "834", "nombre": "calidad agua"}
     ],
 
 
-### Bad examples
+### Ejemplos Incorrectos
 
-Values in keys:
+Valores en las keys:
 
     "tags": [
-      {"125": "Environment"},
-      {"834": "Water Quality"}
+      {"125": "ambiente"},
+      {"834": "calidad agua"}
     ],
 
 
-## Error handling
+## Gestión de errores
 
-Error responses should include a common HTTP status code, message for the developer, message for the end-user (when appropriate), internal error code (corresponding to some specific internally determined error number), links where developers can find more info. For example:
+Las respuestas de error deben incluir un código de estado HTTP, un mensaje común para el desarrollador, mensaje para el usuario final (en caso de ser necesario), el código de error interno (que corresponde a un número de error específico determinado internamente), enlaces donde los desarrolladores pueden encontrar más info. Por ejemplo:
 
     {
       "status" : "400",
-      "developerMessage" : "Verbose, plain language description of the problem. Provide developers
-       suggestions about how to solve their problems here",
-      "userMessage" : "This is a message that can be passed along to end-users, if needed.",
+      "developerMessage" : "Descriptiva, una descripción clara del problema. Proporcionar desarrolladores
+        sugerencias sobre cómo resolver sus problemas",
+      "userMessage" : "De ser necesario, este mensaje puede darse al usuario final.",
       "errorCode" : "444444",
       "more info" : "http://www.ejemplo.gob.ar/developer/path/to/help/for/444444,
        http://drupal.org/node/444444",
     }
 
-Use three simple, common response codes indicating (1) success, (2) failure due to client-side problem, (3) failure due to server-side problem:
+Utilice tres códigos de respuesta simples, comunes indicando (1) el éxito, (2) el fracaso debido a un problema del lado del cliente (client-side), (3) el fracaso debido a un problema en el servidor (server-side).
 * 200 - OK
 * 400 - Bad Request
 * 500 - Internal Server Error
