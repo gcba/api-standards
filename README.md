@@ -14,7 +14,7 @@
 
 ## Guidelines
 
-Este documento provee guidelines y ejemplos para Buenos Aires API, buscamos fomentar la consistencia, mantenimiento y mejores practicas en las aplicaciones. BA API tiene por objetivo crear una interfase RESTful API para una buena experiencia de desarrollo.
+Este documento provee guidelines y ejemplos para Buenos Aires API, buscamos fomentar la coherencia, mantenimiento y mejores practicas en las aplicaciones. BA API tiene por objetivo crear una interfase RESTful API para una buena experiencia de desarrollo.
 
 En este documento se inspira en gran medida de:
 * [WHITE HOUSE API](https://github.com/WhiteHouse/api-standards)
@@ -25,61 +25,61 @@ En este documento se inspira en gran medida de:
 
 ## Pragmatic REST
 
-Esta guia tiene por objtivo darle soporte a una RESTful API. Salvo algunas excepciones:
+Esta guia tiene por objetivo darle soporte a una RESTful API. Salvo algunas excepciones:
 * Agregar el numero de version de API en la URL (ver ejemplo abajo). No aceptar ningun request que no especifique un numero de version.
-* Permitir a los usuarios solicitaro formatos comoJSON o XML de la siguiente manera:
+* Permitir a los usuarios solicitar formatos como JSON o XML de la siguiente manera:
     * http://ejemplo.gob.ar/api/v1/informe.json
     * http://ejemplo.gob.ar/api/v1/informe.xml
 
 ## RESTful URLs
 
-### General guidelines for RESTful URLs
-* A URL identifies a resource.
-* URLs should include nouns, not verbs.
-* Use plural nouns only for consistency (no singular nouns).
-* Use HTTP verbs (GET, POST, PUT, DELETE) to operate on the collections and elements.
-* You shouldn’t need to go deeper than resource/identifier/resource.
-* Put the version number at the base of your URL, for example http://example.com/v1/path/to/resource.
+### Guidelines generales para RESTful URLs
+* Una URL identifica un recurso.
+* URLs deben incluir nombres, no verbos.
+* Utilice nombres en plural sólo por coherencia (sin nombres en singular).
+* Utilice HTTP verbs (GET, POST, PUT, DELETE) para operar en las colecciones y elementos..
+* Usted no necesita ir más allá de recurso/identificador/recurso.
+* Ponga el número de versión en la base de la URL, por ejemplo http://ejemplo.gob.ar/v1/path/to/recurso.
 * URL v. header:
-    * If it changes the logic you write to handle the response, put it in the URL.
-    * If it doesn’t change the logic for each response, like OAuth info, put it in the header.
-* Specify optional fields in a comma separated list.
-* Formats should be in the form of api/v2/resource/{id}.json
+    * Si cambia la logica para administrar la respuesta, agregarlo en la URL.
+    * Si no modifica la logica para cada respuesta, como OAuth info, agregarlo en el Header.
+* Especificar campos opcionales en una lista separada por comas.
+* Los Formatos deben estar en la forma de api/v2/recurso/{id}.json
 
-### Good URL examples
-* List of magazines:
-    * http://www.example.gov/api/v1/magazines.json
-* Filtering is a query:
-    * http://www.example.gov/api/v1/magazines.json?year=2011&sort=desc
-    * http://www.example.gov/api/v1/magazines.json?topic=economy&year=2011
-* A single magazine in JSON format:
-    * http://www.example.gov/api/v1/magazines/1234.json
-* All articles in (or belonging to) this magazine:
-    * http://www.example.gov/api/v1/magazines/1234/articles.json
-* All articles in this magazine in XML format:
-    * GET http://example.gov/api/v1/magazines/1234/articles.xml
-* Specify optional fields in a comma separated list:
-    * http://www.example.gov/api/v1/magazines/1234.json?fields=title,subtitle,date
-* Add a new article to a particular magazine:
-    * POST http://example.gov/api/v1/magazines/1234/articles
+### Ejemplos de un Correcto uso de las URL
+* Lista de Informes:
+    * http://www.ejemplo.gob.ar/api/v1/informes.json
+* Filtrando una query:
+    * http://www.ejemplo.gob.ar/api/v1/informes.json?year=2011&sort=desc
+    * http://www.ejemplo.gob.ar/api/v1/informes.json?topic=economy&year=2011
+* Un unico informe en formato JSON:
+    * http://www.ejemplo.gob.ar/api/v1/informes/1234.json
+* Todos los articulos en (o pertenecen a) este informe:
+    * http://www.ejemplo.gob.ar/api/v1/informes/1234/articles.json
+* Todos los articulos de este informe en formato XML:
+    * GET http://ejemplo.gob.ar/api/v1/informes/1234/articles.xml
+* Especificar campos opcionales en una lista separada por comas:
+    * http://www.ejemplo.gob.ar/api/v1/informes/1234.json?fields=titulo,subtitulo,fecha
+* Agregar un articulo a un informe:
+    * POST http://ejemplo.gob.ar/api/v1/informes/1234/articles
 
-### Bad URL examples
-* Non-plural noun:
-    * http://www.example.gov/magazine
-    * http://www.example.gov/magazine/1234
-    * http://www.example.gov/publisher/magazine/1234
-* Verb in URL:
-    * http://www.example.gov/magazine/1234/create
-* Filter outside of query string
-    * http://www.example.gov/magazines/2011/desc
+### Usos NO CORRECTOS de URL
+* Nombres en singular:
+    * http://www.ejemplo.gob.ar/informe
+    * http://www.ejemplo.gob.ar/informe/1234
+    * http://www.ejemplo.gob.ar/publicador/informe/1234
+* Verbo en URL:
+    * http://www.ejemplo.gob.ar/informe/1234/crear
+* Filtro fuera de la query de consulta
+    * http://www.ejemplo.gob.ar/informes/2011/desc
 
 ## HTTP Verbs
 
 | HTTP METHOD | POST            | GET       | PUT         | DELETE |
 | ----------- | --------------- | --------- | ----------- | ------ |
-| CRUD OP     | CREATE          | READ      | UPDATE      | DELETE |
-| /dogs       | Create new dogs | List dogs | Bulk update | Delete all dogs |
-| /dogs/1234  | Error           | Show Bo   | If exists, update Bo; If not, error | Delete Bo |
+| CRUD OP     | CREATE          | READ      | UPfecha      | DELETE |
+| /perros       | Create nuevo perro | List perros | Bulk upfecha | Delete all perros |
+| /perros/1234  | Error           | Show perro   | If exists, update perro; If not, error | Delete perro |
 
 (Example from Web API Design, by Brian Mulloy, Apigee.)
 
@@ -120,7 +120,7 @@ Error responses should include a common HTTP status code, message for the develo
        suggestions about how to solve their problems here",
       "userMessage" : "This is a message that can be passed along to end-users, if needed.",
       "errorCode" : "444444",
-      "more info" : "http://www.example.gov/developer/path/to/help/for/444444,
+      "more info" : "http://www.ejemplo.gob.ar/developer/path/to/help/for/444444,
        http://drupal.org/node/444444",
     }
 
@@ -143,7 +143,7 @@ Use three simple, common response codes indicating (1) success, (2) failure due 
 
 * If no limit is specified, return results with a default limit.
 * To get records 50 through 75 do this:
-    * http://example.gov/magazines?limit=25&offset=50
+    * http://ejemplo.gob.ar/informes?limit=25&offset=50
     * offset=50 means, ‘begin with record number fifty’
     * limit=25 means, ‘return 25 records’
 
@@ -166,13 +166,13 @@ Information about record limits should also be included in the Example resonse. 
 
 ### API Resources
 
-  - [GET /magazines](#get-magazines)
-  - [GET /magazines/[id]](#get-magazinesid)
-  - [POST /magazines/[id]/articles](#post-magazinesidarticles)
+  - [GET /informes](#get-informes)
+  - [GET /informes/[id]](#get-informesid)
+  - [POST /informes/[id]/articles](#post-informesidarticles)
 
-### GET /magazines
+### GET /informes
 
-Example: http://example.gov/api/v1/magazines.json
+Example: http://ejemplo.gob.ar/api/v1/informes.json
 
     {
         "metadata": {
@@ -185,8 +185,8 @@ Example: http://example.gov/api/v1/magazines.json
         "results": [
             {
                 "id": "1234",
-                "type": "magazine",
-                "title": "Public Water Systems",
+                "type": "informe",
+                "titulo": "Public Water Systems",
                 "tags": [
                     {"id": "125", "name": "Environment"},
                     {"id": "834", "name": "Water Quality"}
@@ -195,8 +195,8 @@ Example: http://example.gov/api/v1/magazines.json
             },
             {
                 "id": 2351,
-                "type": "magazine",
-                "title": "Public Schools",
+                "type": "informe",
+                "titulo": "Public Schools",
                 "tags": [
                     {"id": "125", "name": "Elementary"},
                     {"id": "834", "name": "Charter Schools"}
@@ -205,8 +205,8 @@ Example: http://example.gov/api/v1/magazines.json
             }
             {
                 "id": 2351,
-                "type": "magazine",
-                "title": "Public Schools",
+                "type": "informe",
+                "titulo": "Public Schools",
                 "tags": [
                     {"id": "125", "name": "Pre-school"},
                 ],
@@ -215,14 +215,14 @@ Example: http://example.gov/api/v1/magazines.json
         ]
     }
 
-### GET /magazines/[id]
+### GET /informes/[id]
 
-Example: http://example.gov/api/v1/magazines/[id].json
+Example: http://ejemplo.gob.ar/api/v1/informes/[id].json
 
     {
         "id": "1234",
-        "type": "magazine",
-        "title": "Public Water Systems",
+        "type": "informe",
+        "titulo": "Public Water Systems",
         "tags": [
             {"id": "125", "name": "Environment"},
             {"id": "834", "name": "Water Quality"}
@@ -232,15 +232,15 @@ Example: http://example.gov/api/v1/magazines/[id].json
 
 
 
-### POST /magazines/[id]/articles
+### POST /informes/[id]/articles
 
-Example: Create – POST  http://example.gov/api/v1/magazines/[id]/articles
+Example: Create – POST  http://ejemplo.gob.ar/api/v1/informes/[id]/articles
 
     {
-        "title": "Raising Revenue",
+        "titulo": "Raising Revenue",
         "author_first_name": "Jane",
         "author_last_name": "Smith",
-        "author_email": "jane.smith@example.gov",
+        "author_email": "jane.smith@ejemplo.gob.ar",
         "year": "2012"
         "month": "August"
         "day": "18"
