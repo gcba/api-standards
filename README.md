@@ -127,13 +127,13 @@ Utilice tres códigos de respuesta simples, comunes indicando (1) el éxito, (2)
 * 500 - Internal Server Error
 
 
-## Versions
+## Versiones
 
-* Never release an API without a version number.
-* Versions should be integers, not decimal numbers, prefixed with ‘v’. For example:
-    * Good: v1, v2, v3
-    * Bad: v-1.1, v1.2, 1.3
-* Maintain APIs at least one version back.
+* Nunca lanzar una API sin un numero de version.
+* Los numeros de version deben ser enteros, no decimales y con el prefijo 'v. Por ejemplo:
+    * Bien: v1, v2, v3
+    * Mal: v-1.1, v1.2, 1.3
+* Mantener APIs de una version anterior al menos.
 
 
 ## Record limits
