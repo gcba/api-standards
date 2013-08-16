@@ -114,8 +114,7 @@ Las respuestas de error deben incluir un código de estado HTTP, un mensaje com�
 
     {
       "status" : "400",
-      "developerMessage" : "Descriptiva, una descripción clara del problema. Proporcionar desarrolladores
-        sugerencias sobre cómo resolver sus problemas",
+      "developerMessage" : "Descriptiva, una descripción clara del problema. Proporcionar desarrolladores sugerencias sobre cómo resolver sus problemas",
       "userMessage" : "De ser necesario, este mensaje puede darse al usuario final.",
       "errorCode" : "444444",
       "more info" : "http://www.ejemplo.gob.ar/developer/path/to/help/for/444444,
