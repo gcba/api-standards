@@ -1,4 +1,4 @@
-# White House Web API Standards
+# Buenos Aires API Standards
 
 * [Guidelines](#guidelines)
 * [Pragmatic REST](#pragmatic-rest)
@@ -6,7 +6,7 @@
 * [HTTP Verbs](#http-verbs)
 * [Responses](#responses)
 * [Error handling](#error-handling)
-* [Versions](#versions)
+* [Versiones](#versiones)
 * [Record limits](#record-limits)
 * [Request & Response Examples](#request-response-examples)
 * [Mock Responses](#mock-responses)
@@ -14,9 +14,10 @@
 
 ## Guidelines
 
-This document provides guidelines and examples for White House Web APIs, encouraging consistency, maintainability, and best practices across applications. White House APIs aim to balance a truly RESTful API interface with a positive developer experience (DX).
+Este documento provee guidelines y ejemplos para Buenos Aires API, buscamos fomentar la consistencia, mantenimiento y mejores practicas en las aplicaciones. BA API tiene por objetivo crear una interfase RESTful API para una buena experiencia de desarrollo.
 
-This document borrows heavily from:
+En este documento se inspira en gran medida de:
+* [WHITE HOUSE API](https://github.com/WhiteHouse/api-standards)
 * [Designing HTTP Interfaces and RESTful Web Services](http://munich2012.drupal.org/program/sessions/designing-http-interfaces-and-restful-web-services)
 * API Facade Pattern, by Brian Mulloy, Apigee
 * Web API Design, by Brian Mulloy, Apigee
@@ -24,11 +25,11 @@ This document borrows heavily from:
 
 ## Pragmatic REST
 
-These guidelines aim to support a truly RESTful API. Here are a few exceptions:
-* Put the version number of the API in the URL (see examples below). Don’t accept any requests that do not specify a version number.
-* Allow users to request formats like JSON or XML like this:
-    * http://example.gov/api/v1/magazines.json
-    * http://example.gov/api/v1/magazines.xml
+Esta guia tiene por objtivo darle soporte a una RESTful API. Salvo algunas excepciones:
+* Agregar el numero de version de API en la URL (ver ejemplo abajo). No aceptar ningun request que no especifique un numero de version.
+* Permitir a los usuarios solicitaro formatos comoJSON o XML de la siguiente manera:
+    * http://ejemplo.gob.ar/api/v1/informe.json
+    * http://ejemplo.gob.ar/api/v1/informe.xml
 
 ## RESTful URLs
 
