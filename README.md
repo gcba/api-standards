@@ -28,8 +28,8 @@ En este documento se inspira en gran medida de:
 Esta guia tiene por objetivo darle soporte a una RESTful API. Salvo algunas excepciones:
 * Agregar el numero de version de API en la URL (ver ejemplo abajo). No aceptar ningun request que no especifique un numero de version.
 * Permitir a los usuarios solicitar formatos como JSON o XML de la siguiente manera:
-    * http://ejemplo.gob.ar/api/v1/informe.json
-    * http://ejemplo.gob.ar/api/v1/informe.xml
+    * http://buenosaires.gob.ar/api/v1/informe.json
+    * http://buenosaires.gob.ar/api/v1/informe.xml
 
 ## RESTful URLs
 
@@ -39,7 +39,7 @@ Esta guia tiene por objetivo darle soporte a una RESTful API. Salvo algunas exce
 * Utilice nombres en plural sólo por coherencia (sin nombres en singular).
 * Utilice HTTP verbs (GET, POST, PUT, DELETE) para operar en las colecciones y elementos..
 * Usted no necesita ir más allá de recurso/identificador/recurso.
-* Ponga el número de versión en la base de la URL, por ejemplo http://ejemplo.gob.ar/v1/path/to/recurso.
+* Ponga el número de versión en la base de la URL, por ejemplo http://buenosaires.gob.ar/v1/path/to/recurso.
 * URL v. header:
     * Si cambia la logica para administrar la respuesta, agregarlo en la URL.
     * Si no modifica la logica para cada respuesta, como OAuth info, agregarlo en el Header.
@@ -48,30 +48,30 @@ Esta guia tiene por objetivo darle soporte a una RESTful API. Salvo algunas exce
 
 ### Ejemplos de un Correcto uso de las URL
 * Lista de Informes:
-    * http://www.ejemplo.gob.ar/api/v1/informes.json
+    * http://www.buenosaires.gob.ar/api/v1/informes.json
 * Filtrando una query:
-    * http://www.ejemplo.gob.ar/api/v1/informes.json?year=2011&sort=desc
-    * http://www.ejemplo.gob.ar/api/v1/informes.json?topic=economy&year=2011
+    * http://www.buenosaires.gob.ar/api/v1/informes.json?year=2011&sort=desc
+    * http://www.buenosaires.gob.ar/api/v1/informes.json?topic=economy&year=2011
 * Un unico informe en formato JSON:
-    * http://www.ejemplo.gob.ar/api/v1/informes/1234.json
+    * http://www.buenosaires.gob.ar/api/v1/informes/1234.json
 * Todos los articulos en (o pertenecen a) este informe:
-    * http://www.ejemplo.gob.ar/api/v1/informes/1234/articles.json
+    * http://www.buenosaires.gob.ar/api/v1/informes/1234/articles.json
 * Todos los articulos de este informe en formato XML:
-    * GET http://ejemplo.gob.ar/api/v1/informes/1234/articles.xml
+    * GET http://buenosaires.gob.ar/api/v1/informes/1234/articles.xml
 * Especificar campos opcionales en una lista separada por comas:
-    * http://www.ejemplo.gob.ar/api/v1/informes/1234.json?fields=titulo,subtitulo,fecha
+    * http://www.buenosaires.gob.ar/api/v1/informes/1234.json?fields=titulo,subtitulo,fecha
 * Agregar un articulo a un informe:
-    * POST http://ejemplo.gob.ar/api/v1/informes/1234/articles
+    * POST http://buenosaires.gob.ar/api/v1/informes/1234/articles
 
 ### Usos NO CORRECTOS de URL
 * Nombres en singular:
-    * http://www.ejemplo.gob.ar/informe
-    * http://www.ejemplo.gob.ar/informe/1234
-    * http://www.ejemplo.gob.ar/publicador/informe/1234
+    * http://www.buenosaires.gob.ar/informe
+    * http://www.buenosaires.gob.ar/informe/1234
+    * http://www.buenosaires.gob.ar/publicador/informe/1234
 * Verbo en URL:
-    * http://www.ejemplo.gob.ar/informe/1234/crear
+    * http://www.buenosaires.gob.ar/informe/1234/crear
 * Filtro fuera de la query de consulta
-    * http://www.ejemplo.gob.ar/informes/2011/desc
+    * http://www.buenosaires.gob.ar/informes/2011/desc
 
 ## HTTP Verbs
 
@@ -117,7 +117,7 @@ Las respuestas de error deben incluir un código de estado HTTP, un mensaje com�
       "developerMessage" : "Descriptiva, una descripción clara del problema. Proporcionar desarrolladores sugerencias sobre cómo resolver sus problemas",
       "userMessage" : "De ser necesario, este mensaje puede darse al usuario final.",
       "errorCode" : "444444",
-      "more info" : "http://www.ejemplo.gob.ar/developer/path/to/help/for/444444,
+      "more info" : "http://www.buenosaires.gob.ar/developer/path/to/help/for/444444,
        http://drupal.org/node/444444",
     }
 
@@ -136,13 +136,13 @@ Utilice tres códigos de respuesta simples, comunes indicando (1) el éxito, (2)
 * Mantener APIs de una version anterior al menos.
 
 
-## Record limits
+## Registros - Limites
 
-* If no limit is specified, return results with a default limit.
-* To get records 50 through 75 do this:
-    * http://ejemplo.gob.ar/informes?limit=25&offset=50
-    * offset=50 means, ‘begin with record number fifty’
-    * limit=25 means, ‘return 25 records’
+* Si no se especifica un limite, el resultado se muestra con el limite por defecto.
+* Para obtener 50 registros entre 75 hacer lo siguiente:
+    * http://buenosaires.gob.ar/informes?limit=25&offset=50
+    * offset=50 significa, ‘empezar con el registro cincuenta’
+    * limit=25 significa, ‘devolver 25 registros’
 
 Information about record limits should also be included in the Example resonse. Example:
 
@@ -169,7 +169,7 @@ Information about record limits should also be included in the Example resonse. 
 
 ### GET /informes
 
-Example: http://ejemplo.gob.ar/api/v1/informes.json
+Example: http://buenosaires.gob.ar/api/v1/informes.json
 
     {
         "metadata": {
@@ -214,7 +214,7 @@ Example: http://ejemplo.gob.ar/api/v1/informes.json
 
 ### GET /informes/[id]
 
-Example: http://ejemplo.gob.ar/api/v1/informes/[id].json
+Example: http://buenosaires.gob.ar/api/v1/informes/[id].json
 
     {
         "id": "1234",
@@ -231,13 +231,13 @@ Example: http://ejemplo.gob.ar/api/v1/informes/[id].json
 
 ### POST /informes/[id]/articles
 
-Example: Create – POST  http://ejemplo.gob.ar/api/v1/informes/[id]/articles
+Example: Create – POST  http://buenosaires.gob.ar/api/v1/informes/[id]/articles
 
     {
         "titulo": "Raising Revenue",
         "author_first_name": "Jane",
         "author_last_name": "Smith",
-        "author_email": "jane.smith@ejemplo.gob.ar",
+        "author_email": "jane.smith@buenosaires.gob.ar",
         "year": "2012"
         "month": "August"
         "day": "18"
