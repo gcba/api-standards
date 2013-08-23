@@ -8,7 +8,7 @@
 * [Gestión de errores](#Gestión-de-errores)
 * [Versiones](#versiones)
 * [Record limits](#record-limits)
-* [Request & Response Examples](#request-response-examples)
+* [Request & Response Ejemplos](#request-response-Ejemplos)
 * [Mock Responses](#mock-responses)
 * [JSONP](#jsonp)
 
@@ -110,7 +110,7 @@ Valores en las keys:
 
 ## Gestión de errores
 
-Las respuestas de error deben incluir un código de estado HTTP, un mensaje común para el desarrollador, mensaje para el usuario final (en caso de ser necesario), el código de error interno (que corresponde a un número de error específico determinado internamente), enlaces donde los desarrolladores pueden encontrar más info. Por ejemplo:
+Las respuestas de error deben incluir un código de estado HTTP, un mensaje común para el desarrollador, mensaje para el usuario final (en caso de ser necesario), el código de error interno (que corresponde a un número de error específico determinado internombrente), enlaces donde los desarrolladores pueden encontrar más info. Por ejemplo:
 
     {
       "status" : "400",
@@ -144,7 +144,7 @@ Utilice tres códigos de respuesta simples, comunes indicando (1) el éxito, (2)
     * offset=50 significa, ‘empezar con el registro cincuenta’
     * limit=25 significa, ‘devolver 25 registros’
 
-Information about record limits should also be included in the Example resonse. Example:
+La informacion acerca del limite de cantidad de registros tambien deberia ser incluida en los ejemplos de respuestas.
 
     {
         "metadata": {
@@ -159,17 +159,17 @@ Information about record limits should also be included in the Example resonse. 
         ]
     }
 
-## Request & Response Examples
+## Ejemplos de Request & Response
 
-### API Resources
+### API Recursos
 
   - [GET /informes](#get-informes)
   - [GET /informes/[id]](#get-informesid)
-  - [POST /informes/[id]/articles](#post-informesidarticles)
+  - [POST /informes/[id]/articulos](#post-informesidarticulos)
 
 ### GET /informes
 
-Example: http://buenosaires.gob.ar/api/v1/informes.json
+Ejemplo: http://buenosaires.gob.ar/api/v1/informes.json
 
     {
         "metadata": {
@@ -183,29 +183,29 @@ Example: http://buenosaires.gob.ar/api/v1/informes.json
             {
                 "id": "1234",
                 "type": "informe",
-                "titulo": "Public Water Systems",
+                "titulo": "Sistema de Agua Publico",
                 "tags": [
-                    {"id": "125", "name": "Environment"},
-                    {"id": "834", "name": "Water Quality"}
+                    {"id": "125", "nombre": "Ambiente"},
+                    {"id": "834", "nombre": "Calidad Agua"}
                 ],
                 "created": "1231621302"
             },
             {
                 "id": 2351,
                 "type": "informe",
-                "titulo": "Public Schools",
+                "titulo": "Escuelas Publicas",
                 "tags": [
-                    {"id": "125", "name": "Elementary"},
-                    {"id": "834", "name": "Charter Schools"}
+                    {"id": "125", "nombre": "Primaria"},
+                    {"id": "834", "nombre": "ENET Nº4"}
                 ],
                 "created": "126251302"
             }
             {
                 "id": 2351,
                 "type": "informe",
-                "titulo": "Public Schools",
+                "titulo": "Escuelas Publicas",
                 "tags": [
-                    {"id": "125", "name": "Pre-school"},
+                    {"id": "125", "nombre": "Preescolar"},
                 ],
                 "created": "126251302"
             }
@@ -214,15 +214,15 @@ Example: http://buenosaires.gob.ar/api/v1/informes.json
 
 ### GET /informes/[id]
 
-Example: http://buenosaires.gob.ar/api/v1/informes/[id].json
+Ejemplo: http://buenosaires.gob.ar/api/v1/informes/[id].json
 
     {
         "id": "1234",
         "type": "informe",
-        "titulo": "Public Water Systems",
+        "titulo": "Sistema de Agua Publico",
         "tags": [
-            {"id": "125", "name": "Environment"},
-            {"id": "834", "name": "Water Quality"}
+            {"id": "125", "nombre": "Ambiente"},
+            {"id": "834", "nombre": "Calidad Agua"}
         ],
         "created": "1231621302"
     }
@@ -231,17 +231,17 @@ Example: http://buenosaires.gob.ar/api/v1/informes/[id].json
 
 ### POST /informes/[id]/articles
 
-Example: Create – POST  http://buenosaires.gob.ar/api/v1/informes/[id]/articles
+Ejemplo: Create – POST  http://buenosaires.gob.ar/api/v1/informes/[id]/articles
 
     {
-        "titulo": "Raising Revenue",
-        "author_first_name": "Jane",
-        "author_last_name": "Smith",
-        "author_email": "jane.smith@buenosaires.gob.ar",
-        "year": "2012"
-        "month": "August"
-        "day": "18"
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ante ut augue scelerisque ornare. Aliquam tempus rhoncus quam vel luctus. Sed scelerisque fermentum fringilla. Suspendisse tincidunt nisl a metus feugiat vitae vestibulum enim vulputate. Quisque vehicula dictum elit, vitae cursus libero auctor sed. Vestibulum fermentum elementum nunc. Proin aliquam erat in turpis vehicula sit amet tristique lorem blandit. Nam augue est, bibendum et ultrices non, interdum in est. Quisque gravida orci lobortis... "
+        "titulo": "Viajes en Bicicleta",
+        "autor_nombre": "Juan",
+        "autor_apellido": "Perez",
+        "autor_email": "Juan.Perez@buenosaires.gob.ar",
+        "año": "2012"
+        "mes": "Agosto"
+        "dia": "18"
+        "textot": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ante ut augue scelerisque ornare. Aliquam tempus rhoncus quam vel luctus. Sed scelerisque fermentum fringilla. Suspendisse tincidunt nisl a metus feugiat vitae vestibulum enim vulputate. Quisque vehicula dictum elit, vitae cursus libero auctor sed. Vestibulum fermentum elementum nunc. Proin aliquam erat in turpis vehicula sit amet tristique lorem blandit. Nam augue est, bibendum et ultrices non, interdum in est. Quisque gravida orci lobortis... "
 
     }
 
@@ -256,7 +256,7 @@ Note: If the mock parameter is included in a request to the production environme
 
 ## JSONP
 
-JSONP is easiest explained with an example. Here's a one from [StackOverflow](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top):
+JSONP is easiest explained with an Ejemplo. Here's a one from [StackOverflow](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top):
 
 > Say you're on domain abc.com, and you want to make a request to domain xyz.com. To do so, you need to cross domain boundaries, a no-no in most of browserland.
 
@@ -264,7 +264,7 @@ JSONP is easiest explained with an example. Here's a one from [StackOverflow](ht
 
 > Enter JSONP. When you make your request to a server that is JSONP enabled, you pass a special parameter that tells the server a little bit about your page. That way, the server is able to nicely wrap up its response in a way that your page can handle.
 
-> For example, say the server expects a parameter called "callback" to enable its JSONP capabilities. Then your request would look like:
+> For Ejemplo, say the server expects a parameter called "callback" to enable its JSONP capabilities. Then your request would look like:
 
 >         http://www.xyz.com/sample.aspx?callback=mycallback
 
