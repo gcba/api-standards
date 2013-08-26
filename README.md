@@ -257,25 +257,25 @@ Nota: Si el parametro de simulacion existe en el entorno de produccion, un mensa
 
 JSONP es simple de explicar con un Ejemplo. Vamos a usar el siguiente [StackOverflow](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top):
 
-> Say you're on domain abc.com, and you want to make a request to domain xyz.com. To do so, you need to cross domain boundaries, a no-no in most of browserland.
+> Supongamos que estamos en el dominio abc.com, y queremos hacer un request al dominio xyz.com. Para hacer eso, hay que cruzar los limites de dominio, un no-no en la mayoria de los navegadores.
 
-> The one item that bypasses this limitation is `<script>` tags. When you use a script tag, the domain limitation is ignored, but under normal circumstances, you can't really DO anything with the results, the script just gets evaluated.
+> Los unico que bypassea esta limitacion es `<script>` tags. Cuando usas un script tag, la limitacion por dominio es ignorada, pero bajo circunstancias normales, no se puede hacer nada con estos resultados, el script solo es evaluado.
 
-> Enter JSONP. When you make your request to a server that is JSONP enabled, you pass a special parameter that tells the server a little bit about your page. That way, the server is able to nicely wrap up its response in a way that your page can handle.
+> Agrega JSONP. Cuando haces un request a un servidor donde JSONP es enabled, se envia un parametro especial que informa al servidor sobre tu pagina. De esa manera el servidor puede empaquetar la respuesta en una manera que tu pagina puede administrarla.
 
-> For Ejemplo, say the server expects a parameter called "callback" to enable its JSONP capabilities. Then your request would look like:
+> Por Ejemplo, digamos que el server espera un parametro llamado "callback" para activar JSONP. Entonces el request se veria de la siguiente manera:
 
 >         http://www.xyz.com/sample.aspx?callback=mycallback
 
-> Without JSONP, this might return some basic javascript object, like so:
+> Sin JSONP, esto devolveria un objeto basico de javascript:
 
 >         { foo: 'bar' }
 
-> However, with JSONP, when the server receives the "callback" parameter, it wraps up the result a little differently, returning something like this:
+> Sin embargo, con JSONP, cuando el server recibe el parametro "callback", lo empaqueta de manera diferente y devuelve algo asi:
 
 >         mycallback({ foo: 'bar' });
 
-> As you can see, it will now invoke the method you specified. So, in your page, you define the callback function:
+> Como pueden ver, ahora invoca el metodo especificado. Entonces en tu pagina podes definir la funcion callback:
 
 >         mycallback = function(data){
 >             alert(data.foo);
