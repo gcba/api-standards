@@ -246,17 +246,16 @@ Ejemplo: Create – POST  http://buenosaires.gob.ar/api/v1/informes/[id]/article
     }
 
 
-## Mock Responses
-It is suggested that each resource accept a 'mock' parameter on the testing server. Passing this parameter should return a mock data response (bypassing the backend).
+## Simulacion Responses
+Se sugiere que cada recurso acepta un parámetro 'simulacro' en el servidor de prueba. El envio de este parámetro debe devolver una respuesta de datos simulada (sin pasar por el servidor).
 
-Implementing this feature early in development ensures that the API will exhibit consistent behavior, supporting a test driven development methodology.
+Implementar esta funcionalidad desd el inicio del desarrollo aseguroa que la API exihibira un comportamiento consistente apoyado en una metodologia orientada a testing.
 
-Note: If the mock parameter is included in a request to the production environment, an error should be raised.
-
+Nota: Si el parametro de simulacion existe en el entorno de produccion, un mensaje de error deberia emerger.
 
 ## JSONP
 
-JSONP is easiest explained with an Ejemplo. Here's a one from [StackOverflow](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top):
+JSONP es simple de explicar con un Ejemplo. Vamos a usar el siguiente [StackOverflow](http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about?answertab=votes#tab-top):
 
 > Say you're on domain abc.com, and you want to make a request to domain xyz.com. To do so, you need to cross domain boundaries, a no-no in most of browserland.
 
